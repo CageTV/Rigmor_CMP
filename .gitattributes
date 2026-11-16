@@ -1,0 +1,7 @@
+* text=auto
+*.esp binary
+*.esm binary
+*.esl binary
+*.dds binary
+*.dll binary
+*.pex binary

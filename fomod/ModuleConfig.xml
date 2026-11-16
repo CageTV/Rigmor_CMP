@@ -1,0 +1,237 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+  <moduleName>Rigmor Compatibility Patches</moduleName>
+  <installSteps order="Explicit">
+
+    <installStep name="Patches">
+      <optionalFileGroups order="Explicit">
+
+        <group name="Children (TKAA)" type="SelectAny">
+          <plugins order="Explicit">
+
+            <plugin name="TKAA - Rigmor of Bruma Children Patch">
+              <description>Gives Rigmor of Bruma's children the TKAA child skin and body. Selected automatically when Rigmor of Bruma (Rigmor.esp) and TKAA.esp are active.</description>
+              <files>
+                <file source="options\TKAA - Rigmor of Bruma Children Patch\TKAA - Rigmor of Bruma Children Patch.esp" destination="TKAA - Rigmor of Bruma Children Patch.esp"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="Rigmor.esp" state="Active"/>
+                        <fileDependency file="TKAA.esp" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="TKAA - Rigmor of Cyrodiil Children Patch">
+              <description>Gives Rigmor of Cyrodiil's children the TKAA child skin and body. Selected automatically when RigmorCyrodiil.esm, Hearthfires and TKAA.esp are active.</description>
+              <files>
+                <file source="options\TKAA - Rigmor of Cyrodiil Children Patch\TKAA - Rigmor of Cyrodiil Children Patch.esp" destination="TKAA - Rigmor of Cyrodiil Children Patch.esp"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="RigmorCyrodiil.esm" state="Active"/>
+                        <fileDependency file="HearthFires.esm" state="Active"/>
+                        <fileDependency file="TKAA.esp" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+          </plugins>
+        </group>
+
+        <group name="Fixes" type="SelectAny">
+          <plugins order="Explicit">
+
+            <plugin name="Rigmor Riverwood Forest">
+              <description>Makes Rigmor of Bruma and Unique Locations - Riverwood Forest work together. Needs Rigmor.esp, UniqueLocationsRiverwoodForest.esp, USSEP and the Creation Club files it was built against.</description>
+              <files>
+                <file source="options\Rigmor Riverwood Forest\Rigmor_Riverwood Forest.esp" destination="Rigmor_Riverwood Forest.esp"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="Rigmor.esp" state="Active"/>
+                        <fileDependency file="UniqueLocationsRiverwoodForest.esp" state="Active"/>
+                        <fileDependency file="unofficial skyrim special edition patch.esp" state="Active"/>
+                        <fileDependency file="Dawnguard.esm" state="Active"/>
+                        <fileDependency file="HearthFires.esm" state="Active"/>
+                        <fileDependency file="Dragonborn.esm" state="Active"/>
+                        <fileDependency file="ccbgssse001-fish.esm" state="Active"/>
+                        <fileDependency file="ccqdrsse001-survivalmode.esl" state="Active"/>
+                        <fileDependency file="ccbgssse037-curios.esl" state="Active"/>
+                        <fileDependency file="ccbgssse025-advdsgs.esm" state="Active"/>
+                        <fileDependency file="_ResourcePack.esl" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="BleakFalls Rigmor Boss">
+              <description>Compatibility between Rigmor and Bleak Falls Barrow Boss. Needs Bleak Falls Barrow Boss.esp.</description>
+              <files>
+                <file source="options\BleakFalls Rigmor Boss\BleakFalls_Rigmor_Boss.esp" destination="BleakFalls_Rigmor_Boss.esp"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="Bleak Falls Barrow Boss.esp" state="Active"/>
+                        <fileDependency file="Rigmor.esp" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="Rigmor Texture Fixes">
+              <description>16 rebuilt Rigmor textures: full mipmaps for eyes, brows and the baby cowl, and goldbear_d resized from 1022x1024 to 1024x1024 BC7. Loose files; any texture replacer still wins. Selected automatically when either Rigmor mod is active.</description>
+              <files>
+                <folder source="options\Rigmor Texture Fixes\textures" destination="textures"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="Optional"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="Or">
+                        <fileDependency file="Rigmor.esp" state="Active"/>
+                        <fileDependency file="RigmorCyrodiil.esm" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="Rigmor Rose Watcher">
+              <description>Papyrus watcher that un-sticks Rose's "she has lost a lot of blood" scene (stage 65-69) in Rigmor of Bruma. Selected automatically when Rigmor.esp is active. If you run Rigmor Guardian with act=true, leave this unticked.</description>
+              <files>
+                <file source="options\Rigmor Rose Watcher\TR_RigmorRoseWatcher.esp" destination="TR_RigmorRoseWatcher.esp"/>
+                <folder source="options\Rigmor Rose Watcher\scripts" destination="scripts"/>
+                <folder source="options\Rigmor Rose Watcher\source" destination="source"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="Rigmor.esp" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+          </plugins>
+        </group>
+
+        <group name="Weather and creatures" type="SelectAny">
+          <plugins order="Explicit">
+
+            <plugin name="Real Weathers - Rigmor Patch">
+              <description>Gives Rigmor of Cyrodiil's two own weathers (RigmorStormRain, RigmorSkyrimFogSnow) the Real Weathers Remastered lighting, fog and volumetric values. The regions use vanilla weathers and already get Real Weathers without this. Selected automatically when RigmorCyrodiil.esm and Real Weathers are active.</description>
+              <files>
+                <file source="options\Real Weathers - Rigmor Patch\RealWeathers - Rigmor Patch.esp" destination="RealWeathers - Rigmor Patch.esp"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="RigmorCyrodiil.esm" state="Active"/>
+                        <fileDependency file="Real Weathers - Natural and Realistic Weathers for Skyrim.esp" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="Creature Disables - Rigmor">
+              <description>Removes selected creatures from Rigmor's areas through Skyrim Immersive Creatures. Never pre-selected: tick it yourself. Needs Skyrim Immersive Creatures Special Edition.esp.</description>
+              <files>
+                <file source="options\Creature Disables - Rigmor\Creature Disables - Rigmor.esp" destination="Creature Disables - Rigmor.esp"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="Skyrim Immersive Creatures Special Edition.esp" state="Active"/>
+                      </dependencies>
+                      <type name="Optional"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+          </plugins>
+        </group>
+
+      </optionalFileGroups>
+    </installStep>
+
+    <installStep name="Native watcher (SKSE)">
+      <optionalFileGroups order="Explicit">
+        <group name="Rigmor Guardian" type="SelectAny">
+          <plugins order="Explicit">
+            <plugin name="Rigmor Guardian 0.1.0">
+              <description>Native SKSE plugin that watches Rigmor scenes and stalls from outside Papyrus. Ships in observe mode (it only logs). It replaces the Rose Watcher once you set act=true in RigmorGuardian.json. Needs SKSE64 and Address Library. Untested in game.</description>
+              <files>
+                <folder source="options\Rigmor Guardian\SKSE" destination="SKSE"/>
+              </files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="Optional"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="Or">
+                        <fileDependency file="Rigmor.esp" state="Active"/>
+                        <fileDependency file="RigmorCyrodiil.esm" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
+
+  </installSteps>
+</config>

@@ -1,0 +1,45 @@
+{
+  "_readme": "Rigmor Guardian rules. FormIDs are written XXXXXX:Plugin.esp (6 hex digits without the load-order byte, then the plugin that defines the record). settings.act = false only writes what would be done to RigmorGuardian.log; set it to true once the log shows the rules firing at the right moments.",
+
+  "settings": {
+    "enabled": true,
+    "act": false,
+    "notify": false,
+    "debugLog": false,
+    "tickSeconds": 1.0,
+    "settleSeconds": 10.0
+  },
+
+  "observer": {
+    "enabled": true,
+    "plugins": ["Rigmor.esp", "RigmorCyrodiil.esm", "RigmorCyrodiilPatch.esp"],
+    "phaseStallSeconds": 45,
+    "actSeconds": 0,
+    "maxAttempts": 2
+  },
+
+  "rules": [
+    {
+      "name": "Bruma stage 65-69: Rose's 'she has lost a lot of blood' scene hangs",
+      "quest": "0FC4ED:Rigmor.esp",
+      "scene": "0FFBC9:Rigmor.esp",
+      "stageMin": 65,
+      "stageMax": 69,
+      "maxSeconds": 15,
+      "actions": [
+        { "type": "stopScene" },
+        { "type": "setStage", "stage": 70 }
+      ]
+    },
+    {
+      "name": "Bruma stage 65-69: scene is over but stage 70 never came",
+      "quest": "0FC4ED:Rigmor.esp",
+      "stageMin": 65,
+      "stageMax": 69,
+      "maxSeconds": 45,
+      "actions": [
+        { "type": "setStage", "stage": 70 }
+      ]
+    }
+  ]
+}
