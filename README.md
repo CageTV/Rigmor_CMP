@@ -14,13 +14,12 @@ The repository root is a FOMOD installer. Each option below is pre-selected only
 | TKAA - Rigmor of Cyrodiil Children Patch | The same for Rigmor of Cyrodiil | RigmorCyrodiil.esm, HearthFires, TKAA.esp | on Nexus |
 | Rigmor Riverwood Forest | Rigmor of Bruma with Unique Locations - Riverwood Forest | Rigmor.esp, UniqueLocationsRiverwoodForest.esp, USSEP, the Creation Club files it was built against | on Nexus |
 | BleakFalls Rigmor Boss | Rigmor with Bleak Falls Barrow Boss | Bleak Falls Barrow Boss.esp, Rigmor.esp | on Nexus |
-| Rigmor Rose Watcher | Papyrus watcher that un-sticks the Rose scene (stage 65-69) | Rigmor.esp | on Nexus |
+| Rigmor Stall Fix (Rose Watcher + Guardian) | Un-sticks Rose's scene (stage 65-69) and watches all Rigmor scenes for stalls. Installs the Papyrus Rose Watcher (acts from the start) and the native Rigmor Guardian (observe mode, log only); switch to the Guardian later with `act` = true and disable the Rose Watcher plugin | Rigmor.esp; SKSE64 and Address Library for the Guardian | Rose Watcher on Nexus; Guardian not, untested in game |
 | Rigmor Texture Fixes | 16 rebuilt textures: full mipmaps for eyes, brows and the baby cowl, goldbear_d resized to 1024x1024 | either Rigmor mod | not on Nexus |
-| Rigmor Guardian | Native SKSE watcher, observe mode by default; replaces the Rose Watcher once `act` is true | SKSE64, Address Library | not on Nexus, untested in game |
 | Real Weathers - Rigmor Patch | Real Weathers values for Rigmor of Cyrodiil's two own weathers | RigmorCyrodiil.esm, Real Weathers Remastered | not on Nexus, untested in game |
 | Creature Disables - Rigmor | Removes selected creatures from Rigmor's areas | Skyrim Immersive Creatures | not on Nexus, never pre-selected |
 
-Rigmor Rose Watcher and Rigmor Guardian do the same job. Run one of them: leave the Rose Watcher unticked if you set Guardian's `act` to true.
+The Rose Watcher and the Guardian do the same job and are installed together as one option. Run only one of them for real: after setting the Guardian's `act` to true, disable `TR_RigmorRoseWatcher.esp`.
 
 ## Layout
 

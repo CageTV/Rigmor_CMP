@@ -129,12 +129,13 @@
               </typeDescriptor>
             </plugin>
 
-            <plugin name="Rigmor Rose Watcher">
-              <description>Papyrus watcher that un-sticks Rose's "she has lost a lot of blood" scene (stage 65-69) in Rigmor of Bruma. Selected automatically when Rigmor.esp is active. If you run Rigmor Guardian with act=true, leave this unticked.</description>
+            <plugin name="Rigmor Stall Fix (Rose Watcher + Guardian)">
+              <description>Un-sticks Rose's "she has lost a lot of blood" scene (stage 65-69) in Rigmor of Bruma, and watches every Rigmor scene for other stalls. Installs two parts that do the same job: the Rose Watcher (Papyrus plugin, active from the start) and Rigmor Guardian (native SKSE plugin, observe mode: it only writes to its log, RigmorGuardian.log). Once the Guardian log shows its rules firing at the right moments, set "act" to true in SKSE\Plugins\RigmorGuardian.json and disable TR_RigmorRoseWatcher.esp. Needs Rigmor.esp, SKSE64 and Address Library. The Guardian is untested in game. Selected automatically when Rigmor.esp is active.</description>
               <files>
-                <file source="options\Rigmor Rose Watcher\TR_RigmorRoseWatcher.esp" destination="TR_RigmorRoseWatcher.esp"/>
-                <folder source="options\Rigmor Rose Watcher\scripts" destination="scripts"/>
-                <folder source="options\Rigmor Rose Watcher\source" destination="source"/>
+                <file source="options\Rigmor Stall Fix\TR_RigmorRoseWatcher.esp" destination="TR_RigmorRoseWatcher.esp"/>
+                <folder source="options\Rigmor Stall Fix\scripts" destination="scripts"/>
+                <folder source="options\Rigmor Stall Fix\source" destination="source"/>
+                <folder source="options\Rigmor Stall Fix\SKSE" destination="SKSE"/>
               </files>
               <typeDescriptor>
                 <dependencyType>
@@ -203,35 +204,5 @@
 
       </optionalFileGroups>
     </installStep>
-
-    <installStep name="Native watcher (SKSE)">
-      <optionalFileGroups order="Explicit">
-        <group name="Rigmor Guardian" type="SelectAny">
-          <plugins order="Explicit">
-            <plugin name="Rigmor Guardian 0.1.0">
-              <description>Native SKSE plugin that watches Rigmor scenes and stalls from outside Papyrus. Ships in observe mode (it only logs). It replaces the Rose Watcher once you set act=true in RigmorGuardian.json. Needs SKSE64 and Address Library. Untested in game.</description>
-              <files>
-                <folder source="options\Rigmor Guardian\SKSE" destination="SKSE"/>
-              </files>
-              <typeDescriptor>
-                <dependencyType>
-                  <defaultType name="Optional"/>
-                  <patterns>
-                    <pattern>
-                      <dependencies operator="Or">
-                        <fileDependency file="Rigmor.esp" state="Active"/>
-                        <fileDependency file="RigmorCyrodiil.esm" state="Active"/>
-                      </dependencies>
-                      <type name="Recommended"/>
-                    </pattern>
-                  </patterns>
-                </dependencyType>
-              </typeDescriptor>
-            </plugin>
-          </plugins>
-        </group>
-      </optionalFileGroups>
-    </installStep>
-
   </installSteps>
 </config>
